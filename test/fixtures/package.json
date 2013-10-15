@@ -1,6 +1,7 @@
 {
-  "name": "grunt-contrib-bump",
-  "description": "Bump the version property of a JSON file.",
+  "private": true,
+  "name": "grunt-contrib-bump-test",
+  "description": "Test package.json for grunt-contrib-bump",
   "version": "0.1.0",
   "homepage": "https://github.com/gruntjs/grunt-contrib-bump",
   "author": {
@@ -20,18 +21,16 @@
       "url": "https://github.com/gruntjs/grunt-contrib-bump/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "Gruntfile.js",
   "engines": {
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt nodeunit -v"
+    "test": "grunt test"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
     "grunt": "~0.4.1",
-    "grunt-contrib-nodeunit": "~0.2.1",
-    "grunt-contrib-copy": "~0.4.1"
+    "grunt-contrib-nodeunit": "~0.2.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.1"

@@ -18,8 +18,16 @@ module.exports = function(grunt) {
       ],
       options: {
         jshintrc: '.jshintrc'
-      }
+      },
     },
+    bump: {
+      options: {
+        commit: false,
+        tag: false,
+        filepaths: ['tmp/package.json'],
+      },
+    },
+    nodeunit: ['test/*_test.js'],
   });
 
   // Actually load this plugin's task(s).
@@ -27,7 +35,8 @@ module.exports = function(grunt) {
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['jshint', 'nodeunit']);
 };
