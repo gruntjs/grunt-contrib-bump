@@ -3,6 +3,7 @@
 > Bump the version property of a JSON file.
 
 
+## WORK IN PROGRESS (unreleased)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -114,4 +115,4 @@ grunt bump:pa:pr   # still works, eg. 0.0.1 -> 0.0.2-0
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com/)
 
-*This file was generated on Tue Oct 15 2013 09:54:42.*
+*This file was generated on Thu Oct 24 2013 10:42:13.*
