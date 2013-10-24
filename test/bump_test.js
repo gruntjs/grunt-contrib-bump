@@ -12,6 +12,10 @@ function testbump(cmd, cb) {
     args: [cmd, '--no-color'],
   }, function(err, result) {
     if (err) { throw new Error(err); }
+    // If verbose is set output the results from the spawned command for debugging
+    if (process.argv.indexOf('-v') !== -1 || process.argv.indexOf('--verbose') !== -1) {
+      console.log(String(result));
+    }
     cb(String(result));
   });
 }
@@ -52,8 +56,8 @@ exports.bump = {
   prerelease: function(test) {
     test.expect(2);
     testbump('bump:prerelease', function(result) {
-      test.ok(result.indexOf('from 0.1.0 to 0.1.0-0') !== -1, 'Should have bumped prerelease version.');
-      test.equal(grunt.file.readJSON(tmp).version, '0.1.0-0', 'Should have written the version to the file.');
+      test.ok(result.indexOf('from 0.1.0 to 0.1.1-0') !== -1, 'Should have bumped prerelease and patch version.');
+      test.equal(grunt.file.readJSON(tmp).version, '0.1.1-0', 'Should have written the version to the file.');
       test.done();
     });
   },

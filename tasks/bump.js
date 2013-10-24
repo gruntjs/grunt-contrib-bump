@@ -70,6 +70,12 @@ module.exports = function(grunt) {
         if (/-/.test(orig) && mode === 'patch') {
           o.version = o.version.replace(/\d+$/, function(n) { return n - 1; });
         }
+        // If prerelease on an un-prerelease version, bump patch version first
+        if (!/-/.test(orig) && mode === 'prerelease') {
+          s.inc('patch');
+          s.inc('prerelease');
+          o.version = String(s);
+        }
       });
       if (versions[origVersion]) {
         versions[origVersion].filepaths.push(filepath);
