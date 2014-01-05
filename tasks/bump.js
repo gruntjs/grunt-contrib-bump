@@ -47,6 +47,8 @@ module.exports = function(grunt) {
       tagName: 'v{%= version %}',
       tagMessage: 'Version {%= version %}',
       tagPrerelease: false,
+      push: false,
+      pushTo: 'origin'
     });
     // Normalize filepaths to array.
     var filepaths = Array.isArray(options.filepaths) ? options.filepaths : [options.filepaths];
@@ -102,13 +104,22 @@ module.exports = function(grunt) {
     var newVersion = versions[Object.keys(versions)[0]].version;
     if (options.tag) {
       if (options.tagPrerelease || modes.indexOf('prerelease') === -1) {
+        var tagName = processTemplate(options.tagName, {version: newVersion})
         tag(
-          processTemplate(options.tagName, {version: newVersion}),
+          tagName,
           processTemplate(options.tagMessage, {version: newVersion})
         );
+        // Push tag?
+        if (options.push) {
+          push(options.pushTo, tagName);
+        }
       } else {
         grunt.log.writeln('Not tagging (prerelease version).');
       }
+    }
+    // Push?
+    if (options.push) {
+      push(options.pushTo);
     }
     if (this.errorCount > 0) {
       grunt.warn('There were errors.');
@@ -134,6 +145,17 @@ module.exports = function(grunt) {
   function tag(name, message) {
     grunt.log.writeln('Tagging ' + name + ' with message: ' + message);
     run("git tag '" + name + "' -m '" + message + "'");
+  }
+
+  function push(where, what) {
+    where = where || 'origin';
+    what = what || '';
+    if (what != '') {
+      grunt.log.writeln('Pushing ' + what + ' to ' + where);
+    } else {
+      grunt.log.writeln('Pushing to ' + where);
+    }
+    run("git push " + where + " " + what);
   }
 
   function run(cmd) {
