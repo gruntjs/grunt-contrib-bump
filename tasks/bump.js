@@ -128,12 +128,12 @@ module.exports = function(grunt) {
   // Kinda borrowed from https://github.com/geddski/grunt-release
   function commit(filepaths, message) {
     grunt.log.writeln('Committing ' + filepaths.join(', ') + ' with message: ' + message);
-    run("git commit -m '" + message + "' '" + filepaths.join("' '") + "'");
+    run('git commit -m "' + message + '" "' + filepaths.join('" "') + '"');
   }
 
   function tag(name, message) {
     grunt.log.writeln('Tagging ' + name + ' with message: ' + message);
-    run("git tag '" + name + "' -m '" + message + "'");
+    run('git tag "' + name + '" -m "' + message + '"');
   }
 
   function run(cmd) {
