@@ -33,6 +33,9 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-internal": "~0.4.6"
   },
+  "peerDependencies": {
+    "grunt": ">= 0.4.1"
+  },
   "keywords": [
     "gruntplugin"
   ],
