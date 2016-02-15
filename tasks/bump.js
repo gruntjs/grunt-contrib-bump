@@ -63,19 +63,14 @@ module.exports = function(grunt) {
       }
       modes.forEach(function(mode) {
         var orig = o.version;
-        var s = semver.parse(o.version);
-        s.inc(mode);
-        o.version = String(s);
-        // Workaround for https://github.com/isaacs/node-semver/issues/50
-        if (/-/.test(orig) && mode === 'patch') {
-          o.version = o.version.replace(/\d+$/, function(n) { return n - 1; });
-        }
-        // If prerelease on an un-prerelease version, bump patch version first
+        var s = '';
+        // If prerelease on an un-prerelease version, bump prepatch version
         if (!/-/.test(orig) && mode === 'prerelease') {
-          s.inc('patch');
-          s.inc('prerelease');
-          o.version = String(s);
+          s = semver.inc(o.version, 'prepatch');
+        } else {
+          s = semver.inc(o.version, mode);
         }
+        o.version = String(s);
       });
       if (versions[origVersion]) {
         versions[origVersion].filepaths.push(filepath);

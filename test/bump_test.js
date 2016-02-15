@@ -69,7 +69,7 @@ exports.bump = {
       args: ['bump', '--no-color'],
     }, function(err, result) {
       test.notStrictEqual(err, null, 'Should points an error when bump is called without args');
-      test.equal(String(result), 
+      test.equal(String(result),
         'Running "bump" task\n>> Error: no modes specified.\n>> Valid modes are: major, minor, patch, prerelease.'+
         '\nWarning: Use valid modes (or unambiguous mode abbreviations). Use --force to continue.'+
         '\n\nAborted due to warnings.', 'Should tell the args that bump should be called with'

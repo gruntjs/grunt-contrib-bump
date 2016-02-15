@@ -16,11 +16,15 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "main": "tasks/bump.js",
   "scripts": {
     "test": "grunt nodeunit -v"
+  },
+  "dependencies": {
+    "shelljs": "~0.6.0",
+    "semver": "~5.1.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
@@ -32,10 +36,6 @@
   "keywords": [
     "gruntplugin"
   ],
-  "dependencies": {
-    "shelljs": "~0.2.6",
-    "semver": "~2.1.0"
-  },
   "files": [
     "tasks",
     "LICENSE-MIT"
