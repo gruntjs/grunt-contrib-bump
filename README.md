@@ -1,9 +1,9 @@
 # grunt-contrib-bump v0.1.0
 
-> Bump the version property of a JSON file.
+> DEPRECATED - Bump the version property of a JSON file.
 
 
-## WORK IN PROGRESS (unreleased)
+## DEPRECATED
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
